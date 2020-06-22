@@ -1,0 +1,12 @@
+http://moss.stanford.edu/results/3/9934591663509
+
+Comparing studentA-studentB: 27.777779
+Comparing studentA-studentC: 25.0
+Comparing studentA-studentD: 93.75
+Comparing studentA-studentE: 0.0
+Comparing studentB-studentC: 95.0
+Comparing studentB-studentD: 25.0
+Comparing studentB-studentE: 0.0
+Comparing studentC-studentD: 27.777779
+Comparing studentC-studentE: 0.0
+Comparing studentD-studentE: 0.0
