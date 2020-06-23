@@ -1,0 +1,14 @@
+package io.validation;
+
+
+public class Testing {
+	SummaryGeneratingListener listener = new SummaryGeneratingListener();
+	public static void main(String[] args) {
+		
+	}
+	
+	public void runOne() {
+
+	}
+
+}

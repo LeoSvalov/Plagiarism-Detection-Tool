@@ -1,0 +1,23 @@
+package io.validation;
+
+import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
+import org.junit.platform.launcher.LauncherDiscoveryRequest;
+import org.junit.platform.launcher.core.LauncherDiscoveryRequestBuilder;
+import org.junit.platform.engine.discovery.DiscoverySelectors;
+import org.junit.platform.engine.discovery.ClassSelector;
+import org.junit.platform.engine.discovery.*;
+public class Testing {
+	SummaryGeneratingListener listner = new SummaryGeneratingListener();
+	public static void main(String[] args) {
+		
+	}
+	
+	public void runOne() {
+		LauncherDiscoveryRequest request =
+				LauncherDiscoveryRequestBuilder
+				.request()
+				.selectors(selectClass(AnswersTest.class))
+				.build();
+	}
+
+}

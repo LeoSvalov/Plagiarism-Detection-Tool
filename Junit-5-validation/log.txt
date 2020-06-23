@@ -1,0 +1,66 @@
+Student 1 log: io.validation.Answer5
+-- No problems with methods
+-- No problem with NullPointerException
+-- No problem with Zero Division
+-- Multiplication is implemented correctly
+-- Addition is implemented correctly
+-- Division is implemented correctly
+** Hasn't caught IllegalArgumentException in addition
+** Hasn't caught IllegalArgumentException in subtraction
+** Hasn't caught IllegalArgumentException in multiplication
+** Hasn't caught IllegalArgumentException in division
+-- Subtraction is implemented correctly
+
+Student 2 log: io.validation.Answer6
+-- No problems with methods
+-- No problem with NullPointerException
+-- No problem with Zero Division
+-- Multiplication is implemented correctly
+-- Addition is implemented correctly
+-- Division is implemented correctly
+-- No problem with IllegalArgumentException
+-- Subtraction is implemented correctly
+
+Student 3 log: io.validation.Answer3
+-- No problems with methods
+-- No problem with NullPointerException
+** Hasn't caught A Zero Division Exception
+-- Multiplication is implemented correctly
+-- Addition is implemented correctly
+-- Division is implemented correctly
+-- No problem with IllegalArgumentException
+-- Subtraction is implemented correctly
+
+Student 4 log: io.validation.Answer4
+-- No problems with methods
+** Hasn't caught NullPointerException in addition
+** Hasn't caught NullPointerException in subtraction
+** Hasn't caught NullPointerException in multiplication
+** Hasn't caught NullPointerException in division
+-- No problem with Zero Division
+-- Multiplication is implemented correctly
+-- Addition is implemented correctly
+-- Division is implemented correctly
+-- No problem with IllegalArgumentException
+-- Subtraction is implemented correctly
+
+Student 5 log: io.validation.Answer1
+-- No problems with methods
+-- No problem with NullPointerException
+-- No problem with Zero Division
+** Multiplication is not implemented correctly
+** Addition is not implemented correctly
+** Division is not implemented correctly
+-- No problem with IllegalArgumentException
+** Subtraction is not implemented correctly
+
+Student 6 log: io.validation.Answer2
+** No division method
+** Hasn't caught NullPointerException in division
+** Hasn't caught A Zero Division Exception
+-- Multiplication is implemented correctly
+-- Addition is implemented correctly
+** Division is not implemented correctly
+** Hasn't caught IllegalArgumentException in division
+-- Subtraction is implemented correctly
+

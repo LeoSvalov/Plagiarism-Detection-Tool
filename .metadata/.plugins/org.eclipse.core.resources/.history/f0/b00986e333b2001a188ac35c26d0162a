@@ -1,0 +1,14 @@
+package io.validation;
+
+import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
+
+public class Testing {
+	public static void main(String[] args) {
+		
+	}
+	
+	public void runOne() {
+
+	}
+
+}
