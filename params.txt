@@ -1,0 +1,2 @@
+java
+/Users/levsvalov/IdeaProjects/PlagiarismDetectionTool/SomeAssignment
