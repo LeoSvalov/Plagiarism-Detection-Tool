@@ -17,6 +17,7 @@ gen
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.metadata
 
 # Generated files
 .idea/**/contentModel.xml
