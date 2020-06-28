@@ -23,14 +23,8 @@ public class Main {
             - ability to pass threshold number (optionally, otherwise - some default value)
         */
         System.out.println("No errors with input.");
-        /*
-        // here reading
-        System.out.println("Input the language:");
-        String language = in.next();
-        System.out.println("Input the absolute path to the solutions:");
-        String path = in.next();
-        String path =  "/Users/levsvalov/IdeaProjects/PlagiarismDetectionTool/SomeAssignment";
-        */
+//        String path =  "/Users/levsvalov/IdeaProjects/PlagiarismDetectionTool/SomeAssignment";
+
         String command = "./moss.pl -l ";
         File file = new File(path);
         File[] files = file.listFiles();
@@ -42,7 +36,11 @@ public class Main {
                     if (a[j].getName().endsWith(".java")) {
                         // here dictionary is needed for postfixes for appropriate language
 
-
+                        if (files[i].getName().contains(" ")){
+                            String old = files[i].getName();
+                            files[i].getName().replace(" ", "_");
+                            rt.exec("mv " + old + " " + files[i].getName());
+                        }
                         command += path + "/" + files[i].getName() + "/" + a[j].getName() + " ";
                     }
                 }
@@ -85,5 +83,6 @@ public class Main {
             System.out.println(a);
         }
         */
+        
     }
 }

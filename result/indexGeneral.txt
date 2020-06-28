@@ -1,9 +1,9 @@
-http://moss.stanford.edu/results/3/9934591663509
+Checking files . . . 
 
-Comparing studentA-studentB: 27.777779
-Comparing studentA-studentC: 25.0
-Comparing studentA-studentD: 93.75
-Comparing studentA-studentE: 0.0
+Comparing student A-studentB: 27.777779
+Comparing student A-studentC: 25.0
+Comparing student A-studentD: 93.75
+Comparing student A-studentE: 0.0
 Comparing studentB-studentC: 95.0
 Comparing studentB-studentD: 25.0
 Comparing studentB-studentE: 0.0
