@@ -15,10 +15,7 @@ import io.validation.AnswersTest;
 public class Testing {
 	static SummaryGeneratingListener listener = new SummaryGeneratingListener();
 	public static void main(String[] args) {
-		Scanner io = new Scanner(System.in);
-		String in = io.next();
-		if(in.toLowerCase().equals("yes"))
-			runOne();
+		runOne();
 	}
 	
 	public static void runOne() {

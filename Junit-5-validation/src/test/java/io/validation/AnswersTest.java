@@ -230,7 +230,10 @@ class AnswersTest  {
 	@AfterAll
 	static void closeMe() {
 		for(int i = 0; i < N; i++) {
-			System.out.println("Student "+(i+1)+" log: "+classes.get(i).getName());
+			String fullClassName = classes.get(i).getName();
+			String[] tmp = fullClassName.split("\\.");
+			String name = tmp[tmp.length-1];
+			System.out.println(name+" log: "+fullClassName);
 			System.out.println(AnswersLogs[i]);
 		}
 	}
