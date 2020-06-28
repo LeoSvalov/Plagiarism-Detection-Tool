@@ -74,7 +74,7 @@ Then start writing the Junit tests using the aforementioned annotations.
 
 To fetch all classes that extend the Class *parent* and are in a package that has its name starting with the prefix *PackageNamePrefix*
 
-Here (6th line) *Answer* is the parent; make sure to change it.
+Here (5th line) *Answer* is the parent; make sure to change it.
 
     Package[] pkgs = Package.getPackages();
 	for(Package pkg: pkgs) {
