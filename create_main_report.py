@@ -9,10 +9,11 @@ jplag_students = []
 all_jplag_students = []
 all_students = []
 moss_students = []
-threshold = 0
+threshold = 0  # set threshold
+# TODO add to readme place to add threshold
 
 
-class Student:
+class Student:  # Class to store students
     name = ""
     plagiarism = 0
     link = ""
@@ -36,14 +37,14 @@ def add_information(local_name, plg, local_link, checker):  # this function adds
     elif checker == "jplag":
         students_size = len(jplag_students)
     student_exists = -1
-    for i in range(0, students_size):
+    for index in range(0, students_size):
         if checker == "moss":
-            if students[i].name == local_name:
-                student_exists = i
+            if students[index].name == local_name:
+                student_exists = index
                 break
         if checker == "jplag":
-            if jplag_students[i].name == local_name:
-                student_exists = i
+            if jplag_students[index].name == local_name:
+                student_exists = index
                 break
     if student_exists == -1:
         if checker == "moss":
@@ -129,8 +130,7 @@ while index < junit_n:
         index += 1
         continue
     if index == 0 or junit_lines[index].split()[1] == "log:":
-        loc_list = []
-        loc_list.append(junit_lines[index].split()[0])
+        loc_list = [junit_lines[index].split()[0]]
         index += 1
         while index < junit_n:
             if junit_lines[index] == "\n":
@@ -180,27 +180,29 @@ for el in names_of_students:  # Creating table with sorted students in Report
 report.write('''</table><hr>''')
 
 
-def all_plag_write(list, checker):
-    report.write(
+def all_plag_write(list, checker):  # This function create matrix for all pairs of students with grayscale
+    report.write(                   # unstead number persentage
         '''<p>Comparing all works of students for plagiarism ({} checker)</p><table border="2"><tr><th>Name:</th>'''.format(
             checker))
-    for a in names_of_students:
-        report.write("<th>{}</th>".format(a))
+    for index in names_of_students:
+        report.write("<th>{}</th>".format(index))
     report.write("</tr>\n")
-    for a in names_of_students:  # Creating table with sorted students in Report
-        report.write("<tr><td>{}</td>".format(a))
-        for el in names_of_students:
-            if a == el:
+    for index in names_of_students:  # Creating table with sorted students in Report
+        report.write("<tr><td>{}</td>".format(index))
+        for element in names_of_students:
+            if index == element:
                 report.write("<td bgcolor=\"#ffffff\" align=\"center\"></td>")
             for c in list:  # all students store [name1 name2 percentage link] for moss report
-                if c[0] == el and c[1] == a:
+                if c[0] == element and c[1] == index:
                     if str(c[2]).find('.') == 2 or str(c[2]).find('.') == 3:
                         c[2] = c[2][:-2:]
                     color = 254 - int(int(c[2]) * 2.5)
                     color_str = str(hex(color)) * 3
-                    report.write("<td bgcolor=\"#{}\" align=\"center\"><a href=\"{}\">______</a></td>".format(color_str, c[3]))
+                    report.write(
+                        "<td bgcolor=\"#{}\" align=\"center\"><a href=\"{}\">______</a></td>".format(color_str, c[3]))
                     break
     report.write('''</tr></table>''')
+
 
 report.write('''<p>White = 0 % plagiarism<br>Black = 100% plagiarism</p>''')
 all_plag_write(all_students, "MOSS")
@@ -209,7 +211,7 @@ all_plag_write(all_jplag_students, "Jplag")
 report.write(''' </body>
 </html>
 ''')  # Report created
-single_report = open("Report for each student.html", "wt")
+single_report = open("Report for each student.html", "wt")  # Opening new file to write report
 single_report.write('''<!DOCTYPE html>
 <html>
  <head>
@@ -228,14 +230,14 @@ single_report.write('''<!DOCTYPE html>
 ''')
 
 
-def write_single_student_report(list):
-    plag_list = []
-    for b in list:
+def write_single_student_report(given_list):  # Creating function to make less code
+    plagiarism_list = []  # Write them each in new paragraph and sorted by Moss plagiarism persentage
+    for b in given_list:
         if b[0] == a:
-            plag_list.append(b[2])
-    plag_list.sort(reverse=1)
-    for b in plag_list:
-        for c in list:
+            plagiarism_list.append(b[2])
+    plagiarism_list.sort(reverse=1)
+    for b in plagiarism_list:
+        for c in given_list:
             if c[2] == b and c[0] == a:
                 if str(b).find('.') == 2 or str(b).find('.') == 3:
                     b = b[:-2:]
@@ -249,6 +251,8 @@ for a in names_of_students:
     single_report.write('<br><p>Jplag report:</p>')
     write_single_student_report(all_jplag_students)
     single_report.write("\n<br>")
+
+    # Including Junit report into main report
     for b in junit_students:
         if b[0] == a:
             single_report.write("\n<p>Junit tests:</p>")
@@ -260,14 +264,11 @@ for a in names_of_students:
                     single_report.write("<p>[<red>No</red>]{}</p>".format(b[c][2:-2:]))
     single_report.write('<hr>\n')
 
-
-
 single_report.write('''</body>
 </html>''')  # Report created
 
 # Second report by student
-
-report_by_student = open("Report by student.html", "wt")
+report_by_student = open("Report by student.html", "wt") # opening 2 report with separate student
 report_by_student.write('''<!DOCTYPE html>
 <html>
  <head>
@@ -285,34 +286,35 @@ report_by_student.write('''<!DOCTYPE html>
  <body>
 ''')
 
-
 for a in names_of_students:
     report_by_student.write('<h3>{}</h3><p>Plagiarism detected comparing to all students:</p>'.format(a))
-    plag_list = []
-    table_list = [[], [], []]
+    plag_list = []  # Let's sort studnets by percentage of plagiarism of MOSS
+    table_list = [[], [], []]  # make list to fill table easier in future
     for b in all_students:
         if b[0] == a:
             plag_list.append(b[2])
             table_list[0].append(b[1])
             table_list[1].append([b[2], b[3]])
-    plag_list.sort(reverse=1)
+    plag_list.sort(reverse=1)  # sort students by percentage of plagiarism of MOSS
     for f in table_list[0]:
         for c in jplag_students:
             if c.name == f:
                 table_list[2].append([c.plagiarism, c.link])
                 break
 
-    report_by_student.write('<table border="2"><tr><th>Name:</th>')
+    report_by_student.write('<table border="2">\n<tr><th>Name:</th>')  # Writing table to file
     for b in table_list[0]:
         report_by_student.write('<th>{}</th>'.format(b))
-    report_by_student.write('</tr><tr><td>MOSS result:</td>')
+    report_by_student.write('</tr>\n<tr><td>MOSS result:</td>')
     for b in table_list[1]:
         report_by_student.write('<td><a href=\"{}\">{} %</td>'.format(b[1], b[0]))
-    report_by_student.write('</tr><tr><td>Jplag result:</td>')
+    report_by_student.write('</tr>\n<tr><td>Jplag result:</td>')
     for b in table_list[2]:
         report_by_student.write('<td><a href=\"{}\">{} %</td>'.format(b[1], b[0]))
-    report_by_student.write('</tr></table>')
+    report_by_student.write('</tr>\n</table>')
     report_by_student.write("\n<br>")
+
+    # Making Jplag report
     for b in junit_students:
         if b[0] == a:
             report_by_student.write("\n<p>Junit tests:</p>")
@@ -323,7 +325,6 @@ for a in names_of_students:
                 else:
                     report_by_student.write("<p>[<red>No</red>]{}</p>".format(b[c][2:-2:]))
     report_by_student.write('<hr>\n')
-
 
 report_by_student.write('''</body>
 </html>''')  # Report created
