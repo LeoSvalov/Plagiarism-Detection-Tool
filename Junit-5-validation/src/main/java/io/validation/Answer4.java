@@ -1,6 +1,7 @@
 package io.validation;
 
 class Answer4 extends Answer {
+	public static String dbiwvwnwpsuvwmwperirv009_j = "StudentD";
 	public <T> T add(T a, T b) {
 		if(a instanceof Integer && b instanceof Integer)
 			return (T) new Integer(((Integer)a).intValue() + ((Integer)b).intValue());

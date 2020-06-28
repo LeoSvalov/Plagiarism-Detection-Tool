@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +27,7 @@ class AnswersTest  {
 	static FileOutputStream log;
 	static String PackageNamePrefix = "io.";
 	static String[] AnswersLogs;
+	static String nameField = "dbiwvwnwpsuvwmwperirv009_j";
 	static int N;
 	static ArrayList<Class<? extends Answer>> classes = new ArrayList<>();
 
@@ -228,12 +230,13 @@ class AnswersTest  {
 	}
 	
 	@AfterAll
-	static void closeMe() {
+	static void closeMe() throws InstantiationException, IllegalAccessException, NoSuchFieldException, SecurityException {
 		for(int i = 0; i < N; i++) {
+			Answer ans = classes.get(i).newInstance();
 			String fullClassName = classes.get(i).getName();
 			String[] tmp = fullClassName.split("\\.");
 			String name = tmp[tmp.length-1];
-			System.out.println(name+" log: "+fullClassName);
+			System.out.println(classes.get(i).getField(nameField).get(null)+" log: "+fullClassName);
 			System.out.println(AnswersLogs[i]);
 		}
 	}

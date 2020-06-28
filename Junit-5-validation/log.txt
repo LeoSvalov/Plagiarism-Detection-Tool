@@ -1,4 +1,4 @@
-Answer5 log: io.validation.Answer5
+StudentE log: io.validation.Answer5
 -- No problems with methods
 -- No problem with NullPointerException
 -- No problem with Zero Division
@@ -11,7 +11,7 @@ Answer5 log: io.validation.Answer5
 ** Hasn't caught IllegalArgumentException in division
 -- Subtraction is implemented correctly
 
-Answer6 log: io.validation.Answer6
+StudentF log: io.validation.Answer6
 -- No problems with methods
 -- No problem with NullPointerException
 -- No problem with Zero Division
@@ -21,7 +21,7 @@ Answer6 log: io.validation.Answer6
 -- No problem with IllegalArgumentException
 -- Subtraction is implemented correctly
 
-Answer3 log: io.validation.Answer3
+StudentC log: io.validation.Answer3
 -- No problems with methods
 -- No problem with NullPointerException
 ** Hasn't caught A Zero Division Exception
@@ -31,7 +31,7 @@ Answer3 log: io.validation.Answer3
 -- No problem with IllegalArgumentException
 -- Subtraction is implemented correctly
 
-Answer4 log: io.validation.Answer4
+StudentD log: io.validation.Answer4
 -- No problems with methods
 ** Hasn't caught NullPointerException in addition
 ** Hasn't caught NullPointerException in subtraction
@@ -44,7 +44,7 @@ Answer4 log: io.validation.Answer4
 -- No problem with IllegalArgumentException
 -- Subtraction is implemented correctly
 
-Answer1 log: io.validation.Answer1
+StudentA log: io.validation.Answer1
 -- No problems with methods
 -- No problem with NullPointerException
 -- No problem with Zero Division
@@ -54,7 +54,7 @@ Answer1 log: io.validation.Answer1
 -- No problem with IllegalArgumentException
 ** Subtraction is not implemented correctly
 
-Answer2 log: io.validation.Answer2
+StudentB log: io.validation.Answer2
 ** No division method
 ** Hasn't caught NullPointerException in division
 ** Hasn't caught A Zero Division Exception

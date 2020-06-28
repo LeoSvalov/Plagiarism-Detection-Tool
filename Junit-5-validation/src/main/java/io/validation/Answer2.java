@@ -1,6 +1,7 @@
 package io.validation;
 
 class Answer2 extends Answer {
+	public static String dbiwvwnwpsuvwmwperirv009_j = "StudentB";
 	public <T> T add(T a, T b) {
 		if(a == null || b == null)
 			throw new NullPointerException("One of the arguments is null");
