@@ -59,14 +59,15 @@ def add_information(local_name, plg, local_link, checker):  # this function adds
                                                         Student(local_name, plg, local_link))
 
 
-short_report = open("result/report", "rt")
+short_report = open("result/report.txt", "rt")
 moss_url = short_report.readline()  # getting moss report url
 
-if moss_url[-1] == '\\n':
+if moss_url[-1] == '\n':
     moss_url = moss_url[:-1]  # removing '\n'
 moss_report_str = str(requests.get(moss_url).content)  # getting source code of page
 moss_report = moss_report_str.split("\\n")
 print("Page downloaded\nParsing...")
+
 
 size_moss_report = len(moss_report)
 for el in range(14, size_moss_report - 5):  # Parsing Moss report source code to store all plagiarism detections
@@ -79,7 +80,7 @@ for el in range(14, size_moss_report - 5):  # Parsing Moss report source code to
     el_plag = int(buf1[1][1:-2])
     buf2 = moss_report[el].split("/")
     el_name = buf2[-2]
-    #  print(el_name + " " + el_link + " " + str(el_plag) + " %") # All parsed results of students
+    print(el_name + " " + el_link + " " + str(el_plag) + " %") # All parsed results of students
     add_information(el_name, el_plag, el_link, "moss")  # Making unique (the maximum one) plagiarism percentage and link
     moss_students.append([el_name, el_plag, el_link])
 for i in range(0, len(moss_students), 2):  # all students store [name1 name2 percentage link] for moss report

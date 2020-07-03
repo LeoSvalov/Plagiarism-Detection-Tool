@@ -3,6 +3,8 @@ package com.company;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -28,19 +30,20 @@ public class Main {
         String command = "./moss.pl -l ";
         File file = new File(path);
         File[] files = file.listFiles();
-        command = command +  language + " -d ";
-        for (int i=0;i<files.length;i++){
+        command = command + language + " -d ";
+        for (int i = 0; i < files.length; i++) {
             File[] a = files[i].listFiles();
-            if (a!=null) {
+            if (a != null) {
                 for (int j = 0; j < a.length; j++) {
                     if (a[j].getName().endsWith(".java")) {
                         // here dictionary is needed for postfixes for appropriate language
 
-                        if (files[i].getName().contains(" ")){
-                            String old = files[i].getName();
-                            files[i].getName().replace(" ", "_");
-                            rt.exec("mv " + old + " " + files[i].getName());
-                        }
+                        /*if (files[i].getName().contains(" ")){
+                            String old = path + '/' + '"' +  files[i].getName() + '"';
+                            String n = path + "/" +  files[i].getName().replace(" ", "_");
+                            rt.exec("mv " + old + " " + n);
+                            System.out.println(files[i].getName());
+                        }*/
                         command += path + "/" + files[i].getName() + "/" + a[j].getName() + " ";
                     }
                 }
@@ -54,35 +57,37 @@ public class Main {
         BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
         String s = null;
         String urlMoss = "";
-
+        List<String> list = new LinkedList<>();
         while ((s = stdInput.readLine()) != null) {
-            urlMoss =  s;
+            list.add(s);
         }
-
-        String commandJplag = "java -jar jplag-2.11.8-SNAPSHOT-jar-with-dependencies.jar -l java17 -s " +  path;
+        urlMoss = list.get(list.size() - 1);
+        String commandJplag = "java -jar jplag-2.11.8-SNAPSHOT-jar-with-dependencies.jar -l java17 -s " + path;
         proc = rt.exec(commandJplag);
         stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
         ArrayList<String> arrJplag = new ArrayList<>();
         while ((s = stdInput.readLine()) != null) {
-            if(s.startsWith("Comparing")){
+            if (s.startsWith("Comparing")) {
                 arrJplag.add(s);
             }
         }
-        FileWriter wr = new FileWriter(new File("result", "indexGeneral.txt"));
+        FileWriter wr = new FileWriter(new File("result", "report.txt"));
         wr.write(urlMoss + "\n");
-        wr.write("\n");
-        for (String a: arrJplag ){
-            wr.write(a+"\n");
-        }
+       /* wr.write("\n");
+        for (String a : arrJplag) {
+            wr.write(a + "\n");
+        }*/
         wr.close();
-        System.out.println("The results are stored in folder /result/");
-        /*
-        System.out.println("General numbers are here:");
-        System.out.println(urlMoss);
-        for (String a: arrJplag ){
+
+//        System.out.println(urlMoss);
+
+        String GenerateReport = "python3 create_main_report.py";
+        Process pr = rt.exec(GenerateReport);
+        BufferedReader inpt = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        System.out.println("Here is the standard output of the command:\n");
+        String a = null;
+        while ((a = inpt.readLine()) != null) {
             System.out.println(a);
         }
-        */
-        
     }
 }
