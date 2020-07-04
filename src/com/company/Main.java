@@ -50,8 +50,8 @@ public class Main {
             }
         }
 
-
-//        System.out.println(command);
+        System.out.println("The MOSS command:");
+        System.out.println(command);
         Process proc = rt.exec(command);
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));
         BufferedReader stdError = new BufferedReader(new InputStreamReader(proc.getErrorStream()));
@@ -73,10 +73,7 @@ public class Main {
         }
         FileWriter wr = new FileWriter(new File("result", "report.txt"));
         wr.write(urlMoss + "\n");
-       /* wr.write("\n");
-        for (String a : arrJplag) {
-            wr.write(a + "\n");
-        }*/
+
         wr.close();
 
 //        System.out.println(urlMoss);
